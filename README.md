@@ -69,7 +69,7 @@ It achieves **state-of-the-art performance** across coding benchmarks, nearly ma
 
 ---
 
-## 📐 Architecture Diagram
+## 📐 Architecture Diagram (Deepseek Coder V2)
 
 ![Architecture Diagram](images/Architecture.jpg)
 
