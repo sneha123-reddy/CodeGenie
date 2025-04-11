@@ -71,7 +71,7 @@ It achieves **state-of-the-art performance** across coding benchmarks, nearly ma
 
 ## 📐 Architecture Diagram (Deepseek Coder V2)
 
-![Architecture Diagram](images/Architecture.jpg)
+![Architecture Diagram](<img src="workflow.png" width="400"/>)
 
 ---
 
