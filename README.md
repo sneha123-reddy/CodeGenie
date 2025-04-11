@@ -1,4 +1,4 @@
-# ![CodeGenie Icon](images/icon.jpg) CodeGenie — AI-Powered VS Code Extension
+# ![CodeGenie Icon](images/icon.png) CodeGenie — AI-Powered VS Code Extension
 
 **CodeGenie** is a Visual Studio Code extension that integrates generative AI directly into your coding workflow. Designed by developers, for developers — it empowers users with intelligent suggestions, code generation, debugging assistance, and more.
 
