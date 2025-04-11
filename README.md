@@ -1,4 +1,4 @@
-# 🧞‍♂️ CodeGenie — AI-Powered VS Code Extension
+# (images/icon.jpg) CodeGenie — AI-Powered VS Code Extension
 
 **CodeGenie** is a Visual Studio Code extension that integrates generative AI directly into your coding workflow. Designed by developers, for developers — it empowers users with intelligent suggestions, code generation, debugging assistance, and more.
 
@@ -72,7 +72,7 @@ It achieves **state-of-the-art performance** across coding benchmarks, nearly ma
 ## 📐 Architecture Diagram (Deepseek Coder V2)
 
 <p align="center">
-  <img src="images/Architecture.jpg" width="500"/>
+  <img src="images/Architecture.jpg" width="400"/>
 </p>
 
 
@@ -80,7 +80,9 @@ It achieves **state-of-the-art performance** across coding benchmarks, nearly ma
 
 ## 🔄 Workflow Diagram
 
-![Workflow Diagram](images/Workflow.jpg)
+<p align="center">
+  <img src="images/Workflow.jpg)" width="500"/>
+</p>
 
 ---
 
