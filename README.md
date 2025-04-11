@@ -1,4 +1,4 @@
-# (images/icon.jpg) CodeGenie — AI-Powered VS Code Extension
+# ![CodeGenie Icon](images/icon.jpg) CodeGenie — AI-Powered VS Code Extension
 
 **CodeGenie** is a Visual Studio Code extension that integrates generative AI directly into your coding workflow. Designed by developers, for developers — it empowers users with intelligent suggestions, code generation, debugging assistance, and more.
 
@@ -23,20 +23,20 @@ Its interactive UI and seamless **VS Code integration** allow developers to work
 
 CodeGenie aims to streamline development workflows by offering:
 
-- ✅ Context-aware code suggestions
-- 🛠️ Real-time error detection and fixes
-- ⚙️ Code optimization and refactoring
-- 🌐 Support for multiple programming languages and frameworks
+- ✅ Context-aware code suggestions  
+- 🛠️ Real-time error detection and fixes  
+- ⚙️ Code optimization and refactoring  
+- 🌐 Support for multiple programming languages and frameworks  
 
 ---
 
 ## 💡 Use Cases
 
-- **Web Development**: Assist with frontend (HTML, CSS, JS) and backend (Node.js, Django, etc.) code
-- **ML & Data Science**: Generate model scripts, data cleaning code, and pipelines
-- **General Software Engineering**: Automate repetitive tasks, generate boilerplate, and follow best practices
-- **Debugging**: Spot and fix errors more efficiently
-- **Learning & Exploration**: Experiment with code through natural language queries
+- **Web Development**: Assist with frontend (HTML, CSS, JS) and backend (Node.js, Django, etc.) code  
+- **ML & Data Science**: Generate model scripts, data cleaning code, and pipelines  
+- **General Software Engineering**: Automate repetitive tasks, generate boilerplate, and follow best practices  
+- **Debugging**: Spot and fix errors more efficiently  
+- **Learning & Exploration**: Experiment with code through natural language queries  
 
 ---
 
@@ -46,9 +46,9 @@ CodeGenie aims to streamline development workflows by offering:
 
 DeepSeek Coder is a suite of open-source code LLMs (1.3B–33B parameters) trained on **2 trillion tokens** from 87+ programming languages. It introduces advanced techniques like **Fill-In-the-Middle (FIM)** for superior context modeling.
 
-- Outperforms open-source baselines by **5x**
-- Rivals **ChatGPT-3.5 Turbo** in coding tasks
-- Includes **Instruct-tuned** and **v1.5** variants with enhanced capabilities
+- Outperforms open-source baselines by **5x**  
+- Rivals **ChatGPT-3.5 Turbo** in coding tasks  
+- Includes **Instruct-tuned** and **v1.5** variants with enhanced capabilities  
 
 Its training corpus is rigorously curated — only **high-quality code** passes through compiler checks, syntax validation, and deduplication, resulting in a robust, real-world dataset.
 
@@ -58,30 +58,29 @@ Its training corpus is rigorously curated — only **high-quality code** passes 
 
 The next generation — **DeepSeek Coder V2** — takes things further:
 
-- Trained on **10.2 trillion tokens** (code + math + natural language)
-- Supports **338+ programming languages**
-- Uses a **Mixture-of-Experts (MoE)** architecture:
-  - 16B model with 2.4B active params
-  - 236B model with 21B active params
-- Handles **128K token** context windows for large project understanding
+- Trained on **10.2 trillion tokens** (code + math + natural language)  
+- Supports **338+ programming languages**  
+- Uses a **Mixture-of-Experts (MoE)** architecture:  
+  - 16B model with 2.4B active params  
+  - 236B model with 21B active params  
+- Handles **128K token** context windows for large project understanding  
 
 It achieves **state-of-the-art performance** across coding benchmarks, nearly matching or exceeding **GPT-4o**. With improved reasoning and context awareness, it's a top-tier open-source coding model.
 
 ---
 
-## 📐 Architecture Diagram (Deepseek Coder V2)
+## 📐 Architecture Diagram (DeepSeek Coder V2)
 
 <p align="center">
   <img src="images/Architecture.jpg" width="400"/>
 </p>
-
 
 ---
 
 ## 🔄 Workflow Diagram
 
 <p align="center">
-  <img src="images/Workflow.jpg)" width="500"/>
+  <img src="images/Workflow.jpg" width="500"/>
 </p>
 
 ---
