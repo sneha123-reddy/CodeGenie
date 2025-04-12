@@ -1,12 +1,5 @@
-codegenie/backend/deepseek_model/
+.venv/
 codegenie/backend/__pycache__/
 codegenie/backend/.venv/
-codegenie/node_modules
-codegenie/src
-codegenie/dist
-codegenie/.vscode
-codegenie/esbuild.js
-codegenie/package-lock.json
-codegenie/tsconfig.json
-codegenie/eslint.config.mjs
-codegenie/CHANGELOG.md
+codegenie/backend/deepseek_model/
+codegenie/node_modules/
