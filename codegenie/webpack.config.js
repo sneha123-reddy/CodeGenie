@@ -1,3 +1,7 @@
+// When we press npm run, this file creates a new .js file called dist/extension.js
+// This file is created because the browser needs a .js file not .ts file and we wrote the code in .ts
+// So it comprises all the .ts files functionality into one file and runs it in one go.
+
 const path = require("path");
 
 module.exports = {
