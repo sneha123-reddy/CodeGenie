@@ -6,3 +6,5 @@ accelerate==0.28.0
 safetensors==0.4.2
 huggingface_hub==0.22.2
 pydantic==2.6.4
+
+pip install fastapi uvicorn transformers torch accelerate safetensors huggingface_hub pydantic
