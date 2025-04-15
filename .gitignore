@@ -1,3 +1,6 @@
+# The .gitignore file tells Git which files and folders not to track or include in version control.
+# This is super helpful to keep your repo clean from big, unnecessary or sensitive files.
+
 .venv/
 codegenie/backend/__pycache__/
 codegenie/backend/.venv/
