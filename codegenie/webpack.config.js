@@ -1,7 +1,9 @@
-// When we press npm run, this file creates a new .js file called dist/extension.js
-// This file is created because the browser needs a .js file not .ts file and we wrote the code in .ts
-// So it comprises all the .ts files functionality into one file and runs it in one go.
-
+/**
+ * Webpack config to bundle TypeScript code for a VS Code extension.
+ * - Compiles .ts files into dist/extension.js
+ * - Webpack is needed because VS Code runs .js, not .ts
+ * - This setup defines how Webpack should behave when you run `npm run build`
+ */
 
 // A configuration file is a file used to define settings and preferences for how software or tools should run.
 //  It tells a program how to behave, what options to use, where to find files.
@@ -12,7 +14,7 @@ module.exports = {
     mode: "development",        // Keep output readable (not minified)
     target: "node",             // Bundle for Node.js (not browser)
 
-    entry: "./src/extension.ts", // Starting point of the app
+    entry: "./src/extension.ts", // Entry point of the app
 
     output: {
         path: path.resolve(__dirname, "dist"), // Output directory
@@ -28,7 +30,7 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,           // Match .ts files
-                use: "ts-loader",        // Use ts-loader to transpile
+                use: "ts-loader",        // Transpile TypeScript to JavaScript
                 exclude: /node_modules/  // Skip dependencies
             },
         ],
