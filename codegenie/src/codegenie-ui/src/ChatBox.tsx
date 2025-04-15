@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./styles.css";
 
+// ✅ Define the response structure expected from the backend
+interface GenerateResponse {
+  response: string;
+}
+
 const ChatBox = () => {
   const [messages, setMessages] = useState<{ text: string; sender: string }[]>([]);
   const [input, setInput] = useState("");
@@ -23,34 +28,35 @@ const ChatBox = () => {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-  
+
     const prompt = input.trim();
     setMessages(prev => [...prev, { text: prompt, sender: "user" }]);
     setInput("");
     setIsTyping(true);
-  
+
     try {
-      const response = await axios.post("http://127.0.0.1:8000/generate", {
+      // ✅ Type the Axios response
+      const response = await axios.post<GenerateResponse>("http://127.0.0.1:8000/generate", {
         prompt,
         max_tokens: 500
       });
-  
+
       if (!response.data?.response) {
         throw new Error("Empty response from server");
       }
-      
+
       const aiResponse = extractOnlyCode(response.data.response);
       setMessages(prev => [...prev, { text: aiResponse, sender: "bot" }]);
     } catch (error) {
       console.error("API Error:", error);
-      setMessages(prev => [...prev, { 
-        text: "❌ Error: Failed to get response from AI backend", 
-        sender: "bot" 
-      }]);
+      setMessages(prev => [
+        ...prev,
+        { text: "❌ Error: Failed to get response from AI backend", sender: "bot" }
+      ]);
     }
+
     setIsTyping(false);
   };
-  
 
   const extractOnlyCode = (response: string) => {
     return response
