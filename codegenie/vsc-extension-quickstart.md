@@ -1,3 +1,5 @@
+<!-- This is a Mackdown File given by yo code for understanding how VS Code Extension works.-->
+
 # Welcome to your VS Code Extension
 
 ## What's in the folder
