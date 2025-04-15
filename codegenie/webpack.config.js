@@ -2,6 +2,10 @@
 // This file is created because the browser needs a .js file not .ts file and we wrote the code in .ts
 // So it comprises all the .ts files functionality into one file and runs it in one go.
 
+
+// A configuration file is a file used to define settings and preferences for how software or tools should run.
+//  It tells a program how to behave, what options to use, where to find files.
+
 const path = require("path");
 
 module.exports = {
