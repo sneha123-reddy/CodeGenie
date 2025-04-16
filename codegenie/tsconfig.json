@@ -9,6 +9,7 @@
       "outDir": "./dist",
       "rootDir": "./src",
       "types": ["node", "mocha"],
+      "lib": ["ES6", "DOM"],
       "strict": true
     }
   }
