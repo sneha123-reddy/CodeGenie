@@ -1,4 +1,4 @@
-// This file is like a instruction manual on how the code should be processed in the whole process.
+// This file is like an instruction manual for how TypeScript should compile and process the code.
 
 {
     "compilerOptions": {
@@ -8,8 +8,8 @@
       "module": "commonjs",
       "outDir": "./dist",
       "rootDir": "./src",
-      "types": ["node", "mocha"],
+      "types": ["node", "jest"],
+      "lib": ["ES6", "DOM"],
       "strict": true
-    }
-  }
-  
+      }
+}
