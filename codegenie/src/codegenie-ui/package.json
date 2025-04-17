@@ -19,6 +19,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "watch:tsc": "tsc -w",
+    "watch:esbuild": "esbuild src/index.tsx --bundle --outfile=dist/bundle.js --watch",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

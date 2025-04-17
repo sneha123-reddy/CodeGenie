@@ -8,8 +8,8 @@
       "module": "commonjs",
       "outDir": "./dist",
       "rootDir": "./src",
-      "types": ["node", "mocha"],
+      "types": ["node", "jest"],
       "lib": ["ES6", "DOM"],
       "strict": true
-    }
-  }
+      }
+}

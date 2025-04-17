@@ -1,68 +1,70 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CodeGenieViewProvider = void 0;
+const vscode = __importStar(require("vscode"));
+const path = __importStar(require("path"));
+const fs = __importStar(require("fs"));
 class CodeGenieViewProvider {
-    constructor(_extensionUri) {
-        this._extensionUri = _extensionUri;
+    constructor(context) {
+        this.context = context;
     }
-    resolveWebviewView(view) {
-        this._view = view;
-        view.webview.options = { enableScripts: true };
-        view.webview.html = this.getWebviewContent();
-        view.webview.onDidReceiveMessage((message) => __awaiter(this, void 0, void 0, function* () {
-            if (message.command === 'generate') {
-                const aiResponse = yield this.fetchAICompletion(message.text);
-                view.webview.postMessage({ command: 'displayResult', text: aiResponse });
+    resolveWebviewView(webviewView, context, _token) {
+        this._view = webviewView;
+        webviewView.webview.options = {
+            enableScripts: true,
+            localResourceRoots: [
+                vscode.Uri.file(path.join(this.context.extensionPath, "src", "codegenie-ui", "build")),
+            ],
+        };
+        const webviewDistPath = path.join(this.context.extensionPath, "src", "codegenie-ui", "build");
+        const indexPath = path.join(webviewDistPath, "index.html");
+        try {
+            let html = fs.readFileSync(indexPath, "utf8");
+            if (!html.includes('Content-Security-Policy')) {
+                html = html.replace(/<head>/i, `<head>
+            <meta http-equiv="Content-Security-Policy" 
+                  content="default-src 'none'; 
+                          connect-src http://127.0.0.1:8000 vscode-resource:; 
+                          img-src vscode-resource: https:; 
+                          script-src vscode-resource: 'unsafe-inline'; 
+                          style-src vscode-resource: 'unsafe-inline'; 
+                          font-src vscode-resource:;">
+          `);
             }
-        }));
-    }
-    fetchAICompletion(prompt) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return `// AI-generated code for: ${prompt}\nconsole.log("Hello, world!");`;
-            }
-            catch (error) {
-                console.error("Error:", error);
-                return "Error generating code.";
-            }
-        });
-    }
-    getWebviewContent() {
-        return `<!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>CodeGenie AI</title>
-            <style> body { font-family: Arial; padding: 20px; } </style>
-        </head>
-        <body>
-            <h2>CodeGenie AI</h2>
-            <input type="text" id="input" placeholder="Enter prompt..." />
-            <button id="generate">Generate</button>
-            <pre id="output"></pre>
-            <script>
-                const vscode = acquireVsCodeApi();
-                document.getElementById('generate').addEventListener('click', () => {
-                    vscode.postMessage({ command: 'generate', text: document.getElementById('input').value });
-                });
-                window.addEventListener('message', event => {
-                    if (event.data.command === 'displayResult') {
-                        document.getElementById('output').textContent = event.data.text;
-                    }
-                });
-            </script>
-        </body>
-        </html>`;
+            html = html.replace(/(src|href)="(?!https?:\/\/)(.*?)"/g, (match, attr, src) => {
+                const resourceUri = webviewView.webview.asWebviewUri(vscode.Uri.file(path.join(webviewDistPath, src)));
+                return `${attr}="${resourceUri}"`;
+            });
+            webviewView.webview.html = html;
+        }
+        catch (error) {
+            console.error("❌ Failed to load Webview:", error);
+            webviewView.webview.html = `<h1>Error loading UI</h1><p>${error.message}</p>`;
+        }
     }
 }
 exports.CodeGenieViewProvider = CodeGenieViewProvider;
-CodeGenieViewProvider.viewType = 'codegenieView';
+CodeGenieViewProvider.viewType = "codegenieView";
