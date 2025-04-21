@@ -8,3 +8,7 @@ codegenie/backend/deepseek_model/
 codegenie/node_modules/
 codegenie/src/codegenie-ui/node_modules/
 codegenie/src/codegenie-ui/package-lock.json
+
+# macOS system files
+.DS_Store
+**/.DS_Store
