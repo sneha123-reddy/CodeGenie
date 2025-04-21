@@ -8,3 +8,5 @@ huggingface_hub==0.22.2
 pydantic==2.6.4
 
 pip install fastapi uvicorn transformers torch accelerate safetensors huggingface_hub pydantic
+
+hi i am kc
