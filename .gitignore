@@ -7,4 +7,4 @@ codegenie/backend/.venv/
 codegenie/backend/deepseek_model/
 codegenie/node_modules/
 codegenie/src/codegenie-ui/node_modules/
-codegenie/src/codegenie-ui/package-lock.json/
+codegenie/src/codegenie-ui/package-lock.json
