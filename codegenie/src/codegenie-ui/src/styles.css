@@ -81,14 +81,21 @@
 
 .chatbox-input {
   flex: 1;
-  padding: 10px 14px;
-  border-radius: 8px;
+  resize: none;
+  min-height: 40px;
+  max-height: 120px;
+  overflow-y: auto;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 6px;
   border: 1px solid #333;
   background: #2a2f36;
   color: white;
-  outline: none;
-  font-size: 14px;
+  transition: height 0.2s ease;
+  font-family: inherit;
 }
+
 
 .action-button,
 .send-button {
