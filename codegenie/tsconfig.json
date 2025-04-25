@@ -1,15 +1,12 @@
-// This file is like an instruction manual for how TypeScript should compile and process the code.
-
 {
-    "compilerOptions": {
-      "jsx": "react-jsx",
-      "esModuleInterop": true,
-      "target": "es6",
-      "module": "commonjs",
-      "outDir": "./dist",
-      "rootDir": "./src",
-      "types": ["node", "jest"],
-      "lib": ["ES6", "DOM"],
-      "strict": true
-      }
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "types": ["node"],
+    "strict": true
+  }
 }

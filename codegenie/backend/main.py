@@ -4,20 +4,14 @@ from pydantic import BaseModel
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-import os
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0" # to remove warning messages
-
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 # ✅ Load DeepSeek Coder model
 MODEL_NAME = "deepseek-ai/deepseek-coder-1.3b-instruct"  # Ensure correct model version
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir="./deepseek_model")
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME, 
-    #torch_dtype=torch.float16,  # remove comments is you have a gpu
-    device_map="cpu",  # change to cuda if you have gpu
+    torch_dtype=torch.float16,  
+    device_map="cuda",  
     offload_folder="./offload",  
     cache_dir="./deepseek_model"
 ).eval()
@@ -41,7 +35,7 @@ class CodeRequest(BaseModel):
 
 @app.post("/generate")
 async def generate_code(request: CodeRequest):
-    inputs = tokenizer(request.prompt, return_tensors="pt").to("cpu") # change to cuda if you have gpu
+    inputs = tokenizer(request.prompt, return_tensors="pt").to("cuda")
 
     outputs = model.generate(
         **inputs, 
@@ -58,3 +52,4 @@ print("✅ FastAPI Server is ready!")
 
 # Run the FastAPI server:
 # uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
